@@ -1,0 +1,35 @@
+html, body {
+    height:100%;
+    background: url("../images/fondoPrincipal.jpg") no-repeat center;
+    background-size: 100% 100%;
+    background-repeat: repeat-y;
+}
+
+.fontColorLabel{
+    color: whitesmoke;
+}
+
+.inputMedium{
+    width: 280px;
+}
+
+.containerLarge{
+    width: 800px;
+}
+
+.inputSmall{
+    width: 220px;
+}
+
+.inputBig{
+    width: 350px;
+}
+
+.smallFont{
+    font-size: 12px;
+}
+
+.wellWhiteSmoke{
+    background-color: rgb(31, 92, 153);
+    color:whitesmoke;
+}

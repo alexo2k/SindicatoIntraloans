@@ -1,0 +1,17 @@
+[25-Jul-2016 06:48:33 America/Los_Angeles] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 456
+[25-Jul-2016 06:48:33 America/Los_Angeles] PHP Warning:  mysql_close(): 12 is not a valid MySQL-Link resource in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 473
+[25-Jul-2016 07:02:31 America/Los_Angeles] PHP Warning:  mysql_query() [<a href='function.mysql-query'>function.mysql-query</a>]: Unable to save result set in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 455
+[25-Jul-2016 07:02:31 America/Los_Angeles] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 456
+[25-Jul-2016 07:02:31 America/Los_Angeles] PHP Warning:  mysql_close(): 12 is not a valid MySQL-Link resource in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 473
+[31-Jan-2024 08:42:33 America/Los_Angeles] PHP Warning:  mysql_query(): Unable to save result set in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 455
+[31-Jan-2024 08:42:33 America/Los_Angeles] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 456
+[31-Jan-2024 08:42:33 America/Los_Angeles] PHP Warning:  mysql_close(): 19 is not a valid MySQL-Link resource in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 473
+[31-Jan-2024 08:55:29 America/Los_Angeles] PHP Warning:  mysql_query(): Unable to save result set in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 455
+[31-Jan-2024 08:55:29 America/Los_Angeles] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 456
+[31-Jan-2024 08:55:29 America/Los_Angeles] PHP Warning:  mysql_close(): 19 is not a valid MySQL-Link resource in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 473
+[31-Jan-2024 09:08:49 America/Los_Angeles] PHP Warning:  mysql_query(): Unable to save result set in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 455
+[31-Jan-2024 09:08:49 America/Los_Angeles] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 456
+[31-Jan-2024 09:08:49 America/Los_Angeles] PHP Warning:  mysql_close(): 19 is not a valid MySQL-Link resource in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 473
+[31-Jan-2024 09:20:09 America/Los_Angeles] PHP Warning:  mysql_query(): Unable to save result set in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 455
+[31-Jan-2024 09:20:09 America/Los_Angeles] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 456
+[31-Jan-2024 09:20:09 America/Los_Angeles] PHP Warning:  mysql_close(): 19 is not a valid MySQL-Link resource in /home/sntsep5/public_html/intraloans/libs/OperacionesIntraloans.php on line 473
