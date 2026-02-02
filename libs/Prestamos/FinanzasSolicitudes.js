@@ -30,17 +30,14 @@ $().ready(function(){
         var auxComment = auxSplit[2];
         
         switch(auxSplit[0]){
-            case '8000':
-                auxMonto = "$8,000.00";
-            break;
-            case '12000':
-                auxMonto = "$12,000.00";
+            case '10000':
+                auxMonto = "$10,000.00";
                 break;
             case '15000':
                 auxMonto = "$15,000.00";
             break;
-            case '16000':
-                auxMonto = "$16,000.00";
+            case '18000':
+                auxMonto = "$18,000.00";
             break;
             case '20000' :
                 auxMonto = "$20,000.00";

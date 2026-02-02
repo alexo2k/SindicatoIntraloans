@@ -157,11 +157,13 @@ $numeroFolio = str_pad($auxOperacionesBD->obtenFolioEspecifico($zonaTrabajo),3,'
                     <div class="panel-heading">Monto a solicitar</div>
                     <div class="panel-body form-group">
                         <div class="form-group row col-xs-9 col-xs-offset-4">
-                            <label class="radio-inline"><input type="radio" id="rBtnMontoOcho" name="rBtnMonto" value="15000" checked="checked" />$15,000</label>
-                            <!-- <label class="radio-inline"><input type="radio" id="rBtnMontoDoce" name="rBtnMonto" value="10000" />$10,000</label> -->
+                            <!-- <label class="radio-inline"><input type="radio" id="rBtnMontoOcho" name="rBtnMonto" value="15000" checked="checked" />$15,000</label> -->
+                            <label class="radio-inline"><input type="radio" id="rBtnMontoDoce" name="rBtnMonto" value="10000" checked="checked" />$10,000</label>
+                            <label class="radio-inline"><input type="radio" id="rBtnMontoQuince" name="rBtnMonto" value="15000" />$15,000</label>
+                            <label class="radio-inline"><input type="radio" id="rBtnMontoDieciocho" name="rBtnMonto" value="18000" />$18,000</label>
                             <!-- <label class="radio-inline"><input type="radio" id="rBtnMontoDoce" name="rBtnMonto" value="12000" />$12,000</label> -->
                             <!-- <label class="radio-inline"><input type="radio" id="rBtnMontoDieciseis" name="rBtnMonto" value="16000" />$16,000</label> -->
-                            <!-- <label class="radio-inline"><input type="radio" id="rBtnMontoVeinte" name="rBtnMonto" value="20000" />$20,000</label> -->
+                            <label class="radio-inline"><input type="radio" id="rBtnMontoVeinte" name="rBtnMonto" value="20000" />$20,000</label>
                         </div>
                         <div class="form-group row">
                             <label for="txtArComentarios" class="control-label col-xs-6">Comentarios:</label>
