@@ -307,34 +307,34 @@ function crearPDF(solicitudDePrestamo, montoPrestamo){
     
     var doc = new jsPDF();
     doc.addImage(imageData,'JPEG',0,0);
-    doc.setFontSize(13);
-    doc.text(172,26, solicitudDePrestamo.folio); //Folio
+    doc.setFontSize(11);
+    doc.text(160,26, solicitudDePrestamo.folio); //Folio
     doc.setFontSize(9);
-    doc.text(46,56, solicitudDePrestamo.entidadFedeSol); //Entidad Federativa
-    doc.text(164,56, solicitudDePrestamo.getDiaSolicitud()); //Dia
-    doc.text(175,56, solicitudDePrestamo.getMesSolicitud()); //Mes
-    doc.text(182,56, solicitudDePrestamo.getAnioSolicitud()); //Año
-    doc.text(14,79, solicitudDePrestamo.datosPersonales.apPaterno); //Apellido Paterno
-    doc.text(85,79, solicitudDePrestamo.datosPersonales.apMaterno); //Apellido Materno
-    doc.text(145,79, solicitudDePrestamo.datosPersonales.nombre); //Nombre 
-    doc.text(14,90, solicitudDePrestamo.datosPersonales.rFC); //RFC
-    doc.text(162,90, solicitudDePrestamo.datosLaborales.getDiaIngreso()); //Dia Ingreso
-    doc.text(171,90, solicitudDePrestamo.datosLaborales.getMesIngreso()); //Mes Ingreso
-    doc.text(178,90, solicitudDePrestamo.datosLaborales.getAnioIngreso()); //Año Ingreso
-    doc.text(14,102, solicitudDePrestamo.datosLaborales.puesto); //Puesto
-    doc.text(120,102, solicitudDePrestamo.datosLaborales.codNumAnalitico); //Codigo y Num Analitico
-    doc.text(14,114, solicitudDePrestamo.datosLaborales.oficina); //Oficina donde labora
-    doc.text(120,114, solicitudDePrestamo.datosLaborales.ciudadEntidad); //Ciudad y Entidad Federativa
-    doc.text(14,133, solicitudDePrestamo.datosDomiciliarios.calle); //Calle
-    doc.text(112,133, solicitudDePrestamo.datosDomiciliarios.numExt); //Num Exterior
-    doc.text(132,133, solicitudDePrestamo.datosDomiciliarios.numInt); //Num Interior
-    doc.text(158,133, solicitudDePrestamo.datosDomiciliarios.telefono); //Telefono
-    doc.text(14,143, solicitudDePrestamo.datosDomiciliarios.colonia); //Colonia
-    doc.text(78,143, solicitudDePrestamo.datosDomiciliarios.codigoPostal); //Codigo Postal
-    doc.text(115,143, solicitudDePrestamo.datosDomiciliarios.delMun); //Delegacion
-    doc.text(159,143, solicitudDePrestamo.datosDomiciliarios.EntidadFederativa); //Entidad Federativa
-    doc.text(48,181, solicitudDePrestamo.clabe); //Clave Bancaria
-    doc.text(138,181, solicitudDePrestamo.banco); //Institucion Bancaria
+    doc.text(46,54, solicitudDePrestamo.entidadFedeSol); //Entidad Federativa
+    doc.text(164,54, solicitudDePrestamo.getDiaSolicitud()); //Dia
+    doc.text(175,54, solicitudDePrestamo.getMesSolicitud()); //Mes
+    doc.text(182,54, solicitudDePrestamo.getAnioSolicitud()); //Año
+    doc.text(14,77, solicitudDePrestamo.datosPersonales.apPaterno); //Apellido Paterno
+    doc.text(85,77, solicitudDePrestamo.datosPersonales.apMaterno); //Apellido Materno
+    doc.text(145,77, solicitudDePrestamo.datosPersonales.nombre); //Nombre 
+    doc.text(14,88, solicitudDePrestamo.datosPersonales.rFC); //RFC
+    doc.text(162,88, solicitudDePrestamo.datosLaborales.getDiaIngreso()); //Dia Ingreso
+    doc.text(171,88, solicitudDePrestamo.datosLaborales.getMesIngreso()); //Mes Ingreso
+    doc.text(178,88, solicitudDePrestamo.datosLaborales.getAnioIngreso()); //Año Ingreso
+    doc.text(14,100, solicitudDePrestamo.datosLaborales.puesto); //Puesto
+    doc.text(120,100, solicitudDePrestamo.datosLaborales.codNumAnalitico); //Codigo y Num Analitico
+    doc.text(14,112, solicitudDePrestamo.datosLaborales.oficina); //Oficina donde labora
+    doc.text(120,112, solicitudDePrestamo.datosLaborales.ciudadEntidad); //Ciudad y Entidad Federativa
+    doc.text(14,131, solicitudDePrestamo.datosDomiciliarios.calle); //Calle
+    doc.text(112,131, solicitudDePrestamo.datosDomiciliarios.numExt); //Num Exterior
+    doc.text(132,131, solicitudDePrestamo.datosDomiciliarios.numInt); //Num Interior
+    doc.text(158,131, solicitudDePrestamo.datosDomiciliarios.telefono); //Telefono
+    doc.text(14,141, solicitudDePrestamo.datosDomiciliarios.colonia); //Colonia
+    doc.text(78,141, solicitudDePrestamo.datosDomiciliarios.codigoPostal); //Codigo Postal
+    doc.text(115,141, solicitudDePrestamo.datosDomiciliarios.delMun); //Delegacion
+    doc.text(159,141, solicitudDePrestamo.datosDomiciliarios.EntidadFederativa); //Entidad Federativa
+    doc.text(48,180, solicitudDePrestamo.clabe); //Clave Bancaria
+    doc.text(138,180, solicitudDePrestamo.banco); //Institucion Bancaria
   //doc.output('datauri');
     doc.save('Sol_' + solicitudDePrestamo.folio + '_' + solicitudDePrestamo.datosPersonales.rFC + ".pdf");
   
