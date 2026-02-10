@@ -8,7 +8,6 @@ $().ready(function(){
     var rutaTalon = "";
     var rutaCLABE = "";
     
-    
     $("#formEnviarSolicitud").hide();
     $("#formCargarIFE").hide();
     $("#formCargarDomicilio").hide();
@@ -41,11 +40,19 @@ $().ready(function(){
                 var datosDomiciloSolicitud;
                 
                 try{
+                    
+                   var anio = new Date().getFullYear();
+                   var entidad = $("#slctEntFederativa").val();
+                   var folioNumerico = $("#hiddenFolio").val();
+                   var folio4Digitos = folioNumerico.padStart(4,'0');
+
+                   var folioFinal = anio + '/' + entidad + '/' + folio4Digitos;
+
                    datosPersonalesSolicitud = new DatosPersonales($("#txtApPatEmp").val(),$("#txtApMatEmp").val(), $("#txtNombreEmp").val(), $("#txtRfcEmp").val());
                    datosLaboralesSolicitud = new DatosLaborales($("#fechaIngreso").val(),$("#txtPuesto").val(),$("#txtCodigNum").val(),$("#txtOficina").val(),$("#txtEstadoEmp").val());
                    datosDomicilioSolicitud = new DatosDomiciliarios($("#txtCalle").val(), $("#txtNumExt").val(), $("#txtNumInt").val(), $("#txtTelefono").val(), $("#txtColonia").val(), $("#txtCodPostal").val(), $("#txtDelMun").val(), $("#txtEntFed").val());
                    //alexo cambiar aqui el hiddenfolio 
-                   solicitudPrestamo = new Solicitud($("#slctEntFederativa").val() + $("#hiddenFolio").val(),$("#fechaSolicitud").val(),$("#slctEntFederativa option:selected").text(),datosPersonalesSolicitud,datosLaboralesSolicitud,datosDomicilioSolicitud, $("#txtClabe").val(), $("#txtBanco").val(), $("input:radio[name=rBtnMonto]:checked").val() + "_" + $("#slctEntFederativa").val() + "_" + $("#txtArComentarios").val());
+                   solicitudPrestamo = new Solicitud(folioFinal, $("#fechaSolicitud").val(), $("#slctEntFederativa option:selected").text(), datosPersonalesSolicitud, datosLaboralesSolicitud, datosDomicilioSolicitud, $("#txtClabe").val(), $("#txtBanco").val(), $("input:radio[name=rBtnMonto]:checked").val() + "_" + $("#slctEntFederativa").val() + "_" + $("#txtArComentarios").val());
                    
                    crearPDF(solicitudPrestamo, $("input:radio[name=rBtnMonto]:checked").val());
                    $("#formEnviarSolicitud").show();
@@ -336,7 +343,7 @@ function crearPDF(solicitudDePrestamo, montoPrestamo){
     doc.text(48,180, solicitudDePrestamo.clabe); //Clave Bancaria
     doc.text(138,180, solicitudDePrestamo.banco); //Institucion Bancaria
   //doc.output('datauri');
-    doc.save('Sol_' + solicitudDePrestamo.folio + '_' + solicitudDePrestamo.datosPersonales.rFC + ".pdf");
+    doc.save('Sol_' + solicitudDePrestamo.folio.replace(/\//g, '-') + '_' + solicitudDePrestamo.datosPersonales.rFC + ".pdf");
   
 }
 

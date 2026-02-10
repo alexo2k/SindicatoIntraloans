@@ -16,10 +16,17 @@
             //$this->contrasena = 'eti11$$';
             //$this->baseDeDatos = 'interloansdev';
             
+            //Base de datos original
+            // $this->servidor = 'localhost';
+            // $this->usuario = 'sntsep5_intraUsr';
+            // $this->contrasena = 'intraloansUser2015';
+            // $this->baseDeDatos = 'sntsep5_intraloansDB';
+
+            //Base de datos clon
             $this->servidor = 'localhost';
-            $this->usuario = 'sntsep5_intraUsr';
-            $this->contrasena = 'intraloansUser2015';
-            $this->baseDeDatos = 'sntsep5_intraloansDB';
+            $this->usuario = 'prestUsr';
+            $this->contrasena = 'prestamos2026';
+            $this->baseDeDatos = 'sntsep5_prestamosDB_2025';
         }
         
         public function cadenaConexion(){
