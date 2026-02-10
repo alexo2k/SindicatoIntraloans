@@ -7,6 +7,13 @@ $().ready(function(){
     var rutaDomicilio = "";
     var rutaTalon = "";
     var rutaCLABE = "";
+    var zonaTrabajo = $("#hiddenZonaTrabajo").val().trim().toUpperCase();
+
+    $("#slctEntFederativa option").each(function () {
+        if ($(this).text().trim().toUpperCase() === zonaTrabajo) {
+            $(this).prop("selected", true);
+        }
+    });
     
     $("#formEnviarSolicitud").hide();
     $("#formCargarIFE").hide();
@@ -42,7 +49,8 @@ $().ready(function(){
                 try{
                     
                    var anio = new Date().getFullYear();
-                   var entidad = $("#slctEntFederativa").val();
+                   //var entidad = $("#slctEntFederativa").val();
+                   var entidad = $("#hiddenCodigoSeccion").val();
                    var folioNumerico = $("#hiddenFolio").val();
                    var folio4Digitos = folioNumerico.padStart(4,'0');
 

@@ -11,7 +11,8 @@ $auxOperacionesBD = new OpIntraloans();
 $estado = $_SESSION['AreaTrabajo'];
 $zonaTrabajo = ucwords($estado);
 // alexo Cambiar aqui el folioGeneral enviando el Edo
-$numeroFolio = str_pad($auxOperacionesBD->obtenFolioEspecifico($zonaTrabajo),3,'0',STR_PAD_LEFT);
+$numeroFolio = $auxOperacionesBD->obtenFolioEspecifico($zonaTrabajo);
+$codigoSeccion = $auxOperacionesBD->obtenCodigoSeccion($zonaTrabajo);
 ?>
 
 <html lang="ES">
@@ -31,6 +32,8 @@ $numeroFolio = str_pad($auxOperacionesBD->obtenFolioEspecifico($zonaTrabajo),3,'
                     <div class="panel-heading">Datos del Préstamo</div>
                     <div class="panel-body form-horizontal">
                         <input type="hidden" id="hiddenFolio" value="<? echo $numeroFolio ?>"/>
+                        <input type="hidden" id="hiddenCodigoSeccion" value="<? echo $codigoSeccion ?>"/>
+                        <input type="hidden" id="hiddenZonaTrabajo" value="<? echo $zonaTrabajo ?>"/>
                         <div class="form-group row">
                             <label for="slctEntFederativa" class="col-xs-2 control-label">Entidad Federativa</label>
                             <select id="slctEntFederativa" class="col-xs-4 form-control inputMedium" name="slctEntFederativa" required>
@@ -75,8 +78,8 @@ $numeroFolio = str_pad($auxOperacionesBD->obtenFolioEspecifico($zonaTrabajo),3,'
                                 <option value="NLD">Nuevo Laredo</option>
                                 <option value="CTZ">Coatzacoalcos</option>
                                 <option value="CUN">Cancun</option>
-                                <option value="ZCO">ZC Oriente</option>
-                                <option value="ZCP">ZC Poniente</option>
+                                <option value="ZCO">Zona Conurbada Oriente</option>
+                                <option value="ZCP">Zona Conurbada Poniente</option>
                                 <option value="XAL">Xalapa</option>
                             </select>
                             <label for="fechaSolicitud" class="col-xs-2 control-label">Fecha de solicitud</label>

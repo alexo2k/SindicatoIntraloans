@@ -24,7 +24,7 @@
 
             //Base de datos clon
             $this->servidor = 'localhost';
-            $this->usuario = 'prestUsr';
+            $this->usuario = 'sntsep5_prestUsr';
             $this->contrasena = 'prestamos2026';
             $this->baseDeDatos = 'sntsep5_prestamosDB_2025';
         }
@@ -565,6 +565,52 @@
             } catch(Exception $e){
                  mysql_close($streamBD);
                  throw new Exception('Ocurrio un error al recuperar el siguiente folio a asignar: ' + $e->getMessage());
+            }
+        }
+
+        public function obtenCodigoSeccion($areaTrabajo){
+            $streamBD = mysql_connect($this->servidor, $this->usuario, $this->contrasena);
+
+            if(!$streamBD){
+                die('No se pudo realizar la conexion: ' . mysql_error());
+            }
+
+            try{
+                mysql_select_db($this->baseDeDatos, $streamBD)
+                    or die('No se pudo conectar a la base de Préstamos');
+
+                $sql = "
+                    SELECT CodigoSeccion
+                    FROM Credenciales
+                    WHERE AreaTrabajo = '$areaTrabajo'
+                    LIMIT 1
+                ";
+
+                $resultado = mysql_query($sql);
+                $codigo = "00";
+
+                if($resultado && mysql_num_rows($resultado) > 0){
+                    $row = mysql_fetch_array($resultado);
+                    $codigo = trim($row['CodigoSeccion']);
+                }
+
+                mysql_close($streamBD);
+
+                // 🔐 NORMALIZAR A 2 DÍGITOS
+                if(is_numeric($codigo)){
+                    $codigo = str_pad($codigo, 2, '0', STR_PAD_LEFT);
+                } else {
+                    // fallback de seguridad
+                    $codigo = "00";
+                }
+
+                return $codigo;
+
+            } catch(Exception $e){
+                mysql_close($streamBD);
+                throw new Exception(
+                    'Ocurrio un error al obtener CodigoSeccion: ' . $e->getMessage()
+                );
             }
         }
         
