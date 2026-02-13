@@ -36,7 +36,7 @@ $codigoSeccion = $auxOperacionesBD->obtenCodigoSeccion($zonaTrabajo);
                         <input type="hidden" id="hiddenZonaTrabajo" value="<? echo $zonaTrabajo ?>"/>
                         <div class="form-group row">
                             <label for="slctEntFederativa" class="col-xs-2 control-label">Entidad Federativa</label>
-                            <select id="slctEntFederativa" class="col-xs-4 form-control inputMedium" name="slctEntFederativa" required>
+                            <select id="slctEntFederativa" class="col-xs-4 form-control inputMedium" name="slctEntFederativa" disabled>
                                 <option value="AGS">Aguascalientes</option>
                                 <option value="BCN">Baja California Norte</option>
                                 <option value="BCS">Baja California Sur</option>
