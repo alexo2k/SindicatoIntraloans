@@ -81,6 +81,10 @@ $().ready(function(){
     $("#BtnEnviarSolicitudPrestamos").click(function(){
         
         if($("#fileSelSolicitud").val() != "" && $("#rfcImageFile") != "" && $("#domicilioFile") !="" && $("#talonFile") != "" && $("#clabeFile") != ""){
+
+            var folioDisplay = solicitudPrestamo.folio;
+            var folioFs = folioDisplay.replaceAll('/','-');
+
             var formDataRequest = new FormData();
 
             var pdfRequest = $("#fileSelSolicitud").prop('files')[0];
@@ -98,7 +102,11 @@ $().ready(function(){
             formDataRequest.append('clabeFile', imgClabe);
 
             formDataRequest.append('rFCEmpleado', solicitudPrestamo.datosPersonales.rFC);
-            formDataRequest.append('folioSolicitud', solicitudPrestamo.folio);
+
+            // formDataRequest.append('folioSolicitud', solicitudPrestamo.folio);
+            formDataRequest.append('folioSolicitud', folioDisplay);
+            formDataRequest.append('folioFs', folioFs);
+
             formDataRequest.append('jsonTest', jsonSend);
 
             $.ajax({

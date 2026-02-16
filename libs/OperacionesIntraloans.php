@@ -145,10 +145,10 @@
                     $auxDocumento = 'ArchivoDomicilio';
                     break;
                 case 'Request' :
-                    $auxDomicilio = 'ArchivoFormato';
+                    $auxDocumento = 'ArchivoFormato';
                     break;
                 default:
-                    $auxDomicilio = 'ArchivoFormato';
+                    $auxDocumento = 'ArchivoFormato';
             }
             
             if(!$streamBD)
@@ -160,7 +160,7 @@
             {
                 mysql_select_db($this->baseDeDatos, $streamBD) or die('No se pudo conectar a la base de Préstamos');
            
-                $resultado = mysql_query("Select rep.DirectorioRaiz AS 'RootDir', rep.$auxDocumento AS 'FileName' from Repositorio rep, Solicitud sol WHERE rep.Id_Repositorio = sol.Id_Repositorio and sol.Folio = $pFolio;");
+                $resultado = mysql_query("Select rep.DirectorioRaiz AS 'RootDir', rep.$auxDocumento AS 'FileName' from Repositorio rep, Solicitud sol WHERE rep.Id_Repositorio = sol.Id_Repositorio and sol.Folio = '$pFolio';");
                 
                 while($auxBuffer = mysql_fetch_array($resultado)){
                     $responseDir = $auxBuffer['RootDir'] . '/' . $auxBuffer['FileName'];

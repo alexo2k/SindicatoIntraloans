@@ -12,7 +12,13 @@ require_once 'OperacionesIntraloans.php';
         
         $auxOperacionesBD = new OpIntraloans();
         $rfcEmployee = $_POST['rFCEmpleado'];
-        $folioNumber = $_POST['folioSolicitud'];
+        // $folioNumber = $_POST['folioSolicitud'];
+
+        $folioDisplay = $_POST['folioSolicitud'];
+        $folioFs = isset($_POST['folioFs']) ? $_POST['folioFs'] : $folioDisplay;
+        $folioPart = substr($folioDisplay, strrpos($folioDisplay, '/') + 1);
+        $folioDb = (string) intval($folioPart);
+
         
         $requestFileName = basename($_FILES['requestFile']['name']);
         $ifeFileName = basename($_FILES['ifeFile']['name']);
@@ -29,12 +35,19 @@ require_once 'OperacionesIntraloans.php';
         $auxDirRepository = '../doctos/Exp_' . $rfcEmployee;
         $auxTimestampFile = date('Ymd_His');
         
-        $finalRequestFileName = 'Solicitud_' . $rfcEmployee . '_' . $folioNumber . '_' . $auxTimestampFile . '.'  . $extRequestFileName;
-        $finalIfeFileName = 'ImgIfe_' . $rfcEmployee . '_' . $folioNumber . '_' . $auxTimestampFile . '.' . $extIfeFileName;
-        $finalAddressFileName = 'ImgDireccion_' . $rfcEmployee . '_' . $folioNumber . '_' . $auxTimestampFile . '.' . $extAddressFileName;
-        $finalCheckFileName = 'ImgTalon_' . $rfcEmployee . '_' . $folioNumber . '_' . $auxTimestampFile . '.' . $extCheckFileName;
-        $finalClabeFileName = 'ImgClabe_' . $rfcEmployee . '_' . $folioNumber . '_' . $auxTimestampFile . '.' . $extClabeFileName;
+        $finalRequestFileName = 'Solicitud_' . $rfcEmployee . '_' . $folioFs . '_' . $auxTimestampFile . '.'  . $extRequestFileName;
+        $finalIfeFileName = 'ImgIfe_' . $rfcEmployee . '_' . $folioFs . '_' . $auxTimestampFile . '.' . $extIfeFileName;
+        $finalAddressFileName = 'ImgDireccion_' . $rfcEmployee . '_' . $folioFs . '_' . $auxTimestampFile . '.' . $extAddressFileName;
+        $finalCheckFileName = 'ImgTalon_' . $rfcEmployee . '_' . $folioFs . '_' . $auxTimestampFile . '.' . $extCheckFileName;
+        $finalClabeFileName = 'ImgClabe_' . $rfcEmployee . '_' . $folioFs . '_' . $auxTimestampFile . '.' . $extClabeFileName;
         
+        // Previous code
+        // $finalRequestFileName = 'Solicitud_' . $rfcEmployee . '_' . $folioNumber . '_' . $auxTimestampFile . '.'  . $extRequestFileName;
+        // $finalIfeFileName = 'ImgIfe_' . $rfcEmployee . '_' . $folioNumber . '_' . $auxTimestampFile . '.' . $extIfeFileName;
+        // $finalAddressFileName = 'ImgDireccion_' . $rfcEmployee . '_' . $folioNumber . '_' . $auxTimestampFile . '.' . $extAddressFileName;
+        // $finalCheckFileName = 'ImgTalon_' . $rfcEmployee . '_' . $folioNumber . '_' . $auxTimestampFile . '.' . $extCheckFileName;
+        // $finalClabeFileName = 'ImgClabe_' . $rfcEmployee . '_' . $folioNumber . '_' . $auxTimestampFile . '.' . $extClabeFileName;
+
         /*
         $finalRequestFileName = 'Solicitud_' . $rfcEmployee . '_' . $folioNumber . '.' . $extRequestFileName;
         $finalIfeFileName = 'ImgIfe_' . $rfcEmployee . '_' . $folioNumber . '.' . $extIfeFileName;
@@ -130,8 +143,9 @@ require_once 'OperacionesIntraloans.php';
                                                                             'UsuarioSolicitante' => $usuario,
                                                                             'Puesto' => $bufferJson['datosLaborales']['puesto'],
                                                                             'Oficina' => $bufferJson['datosLaborales']['oficina'],
+                                                                            'Folio' => $folioDb,
                                                                             //'Folio' => $_POST['folioSolicitud'],
-                                                                            'Folio' => $bufferJson['folio'],
+                                                                            // 'Folio' => $bufferJson['folio'],
                                                                             //'Folio' => substr($bufferJson['folio'], -3),
                                                                             'CodigoNumero' => $bufferJson['datosLaborales']['codNumAnalitico'],
                                                                             'Clabe' => $bufferJson['clabe'],
