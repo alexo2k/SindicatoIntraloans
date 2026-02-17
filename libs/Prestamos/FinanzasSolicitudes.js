@@ -22,8 +22,16 @@ $().ready(function(){
             }
         });
     });
+
+    function domSafeId(value) {
+        return String(value).replace(/[^A-Za-z0-9_-]/g, "_");
+    }
     
     function prepareData(index, element){
+
+        var folioReal = element.folio;
+        var folioDom = domSafeId(folioReal);
+
         var auxSplit = element.comentarios.split('_');
         var auxMonto = "";
         var auxPreFolio = auxSplit[1];
@@ -56,23 +64,39 @@ $().ready(function(){
         var cellOficina = $('<td></td>').text(element.oficina);
         var cellFechaSolicitud = $('<td></td>').text(element.fechaSolicitud);
         var cellMonto = $('<td></td>').text(auxMonto);
-        var cellStatus = $('<td></td>').attr('id','tdStatus' + element.folio).text(element.status);
+        // var cellStatus = $('<td></td>').attr('id','tdStatus' + element.folio).text(element.status);
+        var cellStatus = $('<td></td>').attr('id', 'tdStatus' + folioDom).text(element.status);
+
         var cellSolicitante = $('<td></td>').text(element.solicitante);
         var cellComentarios = $('<td></td>').text(auxComment != "" ? auxComment : "N/A");
-        
-        var btnAprobarSol = $('<button></button>').attr({        
+
+        var btnAprobarSol = $('<button></button>').attr({
             type : 'button',
-            id : 'btnAprobarSol' + element.folio,
-            value : element.folio,
+            id : 'btnAprobarSol' + folioDom,
+            value : folioReal,
             class: 'btn btn-success btn-xs'
-        }).html('Aprobar').bind('click', approveRequest);
-                
-        var btnRechazarSol = $('<button></button>').attr({        
+            }).html('Aprobar').bind('click', approveRequest);
+
+        var btnRechazarSol = $('<button></button>').attr({
             type : 'button',
-            id : 'btnRechazarSol' + element.folio,
-            value : element.folio,
+            id : 'btnRechazarSol' + folioDom,
+            value : folioReal,
             class: 'btn btn-danger btn-xs'
         }).html('Rechazar').bind('click', rejectRequest);
+    
+        // var btnAprobarSol = $('<button></button>').attr({        
+        //     type : 'button',
+        //     id : 'btnAprobarSol' + element.folio,
+        //     value : element.folio,
+        //     class: 'btn btn-success btn-xs'
+        // }).html('Aprobar').bind('click', approveRequest);
+                
+        // var btnRechazarSol = $('<button></button>').attr({        
+        //     type : 'button',
+        //     id : 'btnRechazarSol' + element.folio,
+        //     value : element.folio,
+        //     class: 'btn btn-danger btn-xs'
+        // }).html('Rechazar').bind('click', rejectRequest);
            
         var optionLegend = $("<option selected='selected' disabled='disabled'>Selecciona un documento</option>");   
         var optionDescargaSol = $('<option>Solicitud PDF</option>').attr('value',element.RootDir + '/' + element.RequestFile);
@@ -127,7 +151,8 @@ $().ready(function(){
         //registroNuevo.append(cellFolio, cellPaterno, cellMaterno, cellNombre, cellRFC, cellOficina, cellFechaSolicitud, cellMonto, cellStatus, cellSolicitante, cellComentarios, cellAprobarSol, cellRechazarSol, cellDescargaSol, cellDescargaIfe, cellDescargaDomi, cellDescargaTalon, cellDescargaCLABE);
         registroNuevo.append(cellFolio, cellPaterno, cellMaterno, cellNombre, cellRFC, cellOficina, cellFechaSolicitud, cellMonto, cellStatus, cellSolicitante, cellComentarios, cellAprobarSol, cellRechazarSol, cellDescargaDocto);
 
-        registroNuevo.attr('id','registro' + element.folio);
+        // registroNuevo.attr('id','registro' + element.folio);
+        registroNuevo.attr('id', 'registro' + folioDom);
         $("#tblSolicitudes").append(registroNuevo);
     }
     
@@ -146,13 +171,24 @@ $().ready(function(){
                 success: function(data){
                     if(data > 0){
                         alert('La solicitud con folio ' + folioNumberRequest + ' ha sido aprobada.');
-                        $("#tdStatus" + folioNumberRequest).text("APROBADA");
-                        $("#btnAprobarSol" + folioNumberRequest).prop('disabled', true);
-                        $("#btnRechazarSol" + folioNumberRequest).prop('disabled', true);
+                        var folioDom = domSafeId(folioNumberRequest);
+                        $("#tdStatus" + folioDom).text("APROBADA");
+                        $("#btnAprobarSol" + folioDom).prop('disabled', true);
+                        $("#btnRechazarSol" + folioDom).prop('disabled', true);
                     } else {
                         alert("Ha ocurrido un error, no se ha podido aceptar la solicitud.");
                     }
                 },
+                // success: function(data){
+                //     if(data > 0){
+                //         alert('La solicitud con folio ' + folioNumberRequest + ' ha sido aprobada.');
+                //         $("#tdStatus" + folioNumberRequest).text("APROBADA");
+                //         $("#btnAprobarSol" + folioNumberRequest).prop('disabled', true);
+                //         $("#btnRechazarSol" + folioNumberRequest).prop('disabled', true);
+                //     } else {
+                //         alert("Ha ocurrido un error, no se ha podido aceptar la solicitud.");
+                //     }
+                // },
                 error: function(xhr, status, error){
                     alert("Ocurrio un error al aprobar la solicitud " + folioNumberRequest + ". ERR: " + xhr.responseText);
                 }
@@ -164,6 +200,7 @@ $().ready(function(){
          var folioNumberRequest = $(this).val();
          if(confirm("¿Rechazar la solicitud con folio " + folioNumberRequest + "?")){
              var razonRechazo = prompt('¿Existe alguna razón para rechazar la solicitud ' + folioNumberRequest + '?');
+             var folioDom = domSafeId(folioNumberRequest);
              $.ajax({
                 url: 'libs/Prestamos/WSRecuperaSolicitudes.php',
                 dataType : 'text',
@@ -178,9 +215,12 @@ $().ready(function(){
                     //alert(data);
                     if(data > 0){
                         alert('La solicitud con folio ' + folioNumberRequest + ' ha sido rechazada.');
-                        $("#tdStatus" + folioNumberRequest).text("RECHAZADA");
-                        $("#btnAprobarSol" + folioNumberRequest).prop('disabled', true);
-                        $("#btnRechazarSol" + folioNumberRequest).prop('disabled', true);
+                        $("#tdStatus" + folioDom).text("RECHAZADA");
+                        $("#btnAprobarSol" + folioDom).prop('disabled', true);
+                        $("#btnRechazarSol" + folioDom).prop('disabled', true);
+                        // $("#tdStatus" + folioNumberRequest).text("RECHAZADA");
+                        // $("#btnAprobarSol" + folioNumberRequest).prop('disabled', true);
+                        // $("#btnRechazarSol" + folioNumberRequest).prop('disabled', true);
                     } else{
                         alert("Ha ocurrido un error, no se ha podido rechazar la solicitud con folio " + folioNumberRequest);
                     }
